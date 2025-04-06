@@ -1,0 +1,292 @@
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int task1a() {
+    int sum = 0;
+    for (int i = 1; i <= 100; i++) {
+        sum += i;
+    }
+    cout << sum << endl;
+}
+
+int task1b() {
+    int n, sum = 0;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        sum += i;
+    }
+    cout << sum << endl;
+}
+
+int task2a() {
+    int primecount = 0, currentnum = 2, flag = 0;
+    while (primecount < 10) {
+        for (int i = 2; i <= sqrt(currentnum) + 1; i++) {
+            if (currentnum % i == 0 && currentnum != 2) {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0) {
+            cout << currentnum << endl;
+            primecount++;
+        }
+        currentnum++;
+        flag = 0;
+    }
+}
+
+int task2b() {
+    int totalprimes, primecount = 0, currentnum = 2, flag = 0;
+    cin >> totalprimes;
+    while (primecount < totalprimes) {
+        for (int i = 2; i <= sqrt(currentnum) + 1; i++) {
+            if (currentnum % i == 0 && currentnum != 2) {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0) {
+            cout << currentnum << endl;
+            primecount++;
+        }
+        currentnum++;
+        flag = 0;
+    }
+}
+
+int task3() {
+    int num;
+    cin >> num;
+    while (num > 1) {
+        cout << num << ",";
+        if (num % 2 == 0) {
+            num /= 2;
+        } else {
+            num = num * 3 + 1;
+        }
+    }
+    cout << 1 << endl;
+}
+
+int task4() {
+    int num, digitcount = 1;
+    cin >> num;
+    while (num > 1) {
+        digitcount++;
+        num /= 10;
+    }
+    cout << digitcount << endl;
+}
+
+int task5() {
+    int num;
+    cin >> num;
+    while (num > 1) {
+        cout << num % 10 << " ";
+        num /= 10;
+    }
+    cout << num << endl;
+}
+
+int findgcd(int x, int y) {
+    if (x == 0)
+        return y;
+    return findgcd(y % x, x);
+}
+
+int task6() {
+    int num1, num2;
+    cin >> num1 >> num2;
+    cout << findgcd(num1, num2);
+}
+
+int task7() {
+    int sum = 0, count = 0, num;
+    while (sum < 100) {
+        cout << "Enter a number: ";
+        cin >> num;
+        sum += num;
+        count++;
+    }
+    cout << "Sum exceeded 100! Total sum: " << sum << endl
+         << "Total numbers entered: " << count;
+}
+
+int task8() {
+    int withdrawal, balance = 500;
+    cout << "Your balance: $500";
+    while (balance > 0) {
+        cout << "Enter withdrawal amount (or 0 to cancel): ";
+        cin >> withdrawal;
+        if (balance < withdrawal) {
+            cout << "Insufficient funds!" << endl;
+        } else {
+            balance -= withdrawal;
+            cout << "Remaining balance: $" << balance << endl;
+        }
+    }
+}
+
+int task9() {
+    string input;
+    cout << "Enter N or Y: ";
+    cin >> input;
+    while (input != "N" && input != "Y") {
+        cout << "Invalid" << endl;
+        cin >> input;
+    }
+    cout << "Accepted";
+}
+
+int task10() {
+    string input;
+    cin >> input;
+    while (input != "Exit") {
+        cout << "Processing..." << endl;
+        cin >> input;
+    }
+    cout << "Goodbye!" << endl;
+}
+
+double add(double num1, double num2) {
+    return num1 + num2;
+}
+
+double subtract(double num1, double num2) {
+    return num1 - num2;
+}
+
+double multiply(double num1, double num2) {
+    return num1 * num2;
+}
+
+double divide(double num1, double num2) {
+    if (num2 == 0) {
+        cout << "Error! Division by zero." << endl;
+        return 0;
+    }
+    return num1 / num2;
+}
+
+void displaymenu() {
+    cout << "Menu:" << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Division" << endl;
+    cout << "5. Exit" << endl;
+}
+
+int task11() {
+    double num1, num2;
+    int choice;
+
+    while (true) {
+        displaymenu();
+        cout << "Enter choice (1/2/3/4/5): ";
+        cin >> choice;
+
+        if (choice == 5) {
+            cout << "Exiting the calculator. Goodbye!" << endl;
+            break;
+        }
+
+        if (choice >= 1 && choice <= 4) {
+            cout << "Enter first number: ";
+            cin >> num1;
+            cout << "Enter second number: ";
+            cin >> num2;
+
+            switch (choice) {
+                case 1:
+                    cout << num1 << " + " << num2 << " = " << add(num1, num2) << endl;
+                    break;
+                case 2:
+                    cout << num1 << " - " << num2 << " = " << subtract(num1, num2) << endl;
+                    break;
+                case 3:
+                    cout << num1 << " * " << num2 << " = " << multiply(num1, num2) << endl;
+                    break;
+                case 4:
+                    cout << num1 << " / " << num2 << " = " << divide(num1, num2) << endl;
+                    break;
+            }
+        } else {
+            cout << "Invalid choice! Please select a valid option." << endl;
+        }
+    }
+}
+
+int task12() {
+    int password;
+    cout << "Enter password: ";
+    cin >> password;
+
+    while (password != 6543) {
+        cout << "Incorrect" << endl;
+        cout << "Enter password: " << endl;
+        cin >> password;
+    }
+    cout << "Access Granted";
+}
+
+int task13() {
+    long long int guess, randomnum;
+    cout << "Guess: ";
+    cin >> guess;
+    srand(time(0));
+
+    randomnum = rand() % 100 + 1;
+    cout << randomnum << endl;
+    while (guess != randomnum) {
+        if (guess < randomnum) {
+            cout << "too low" << endl;
+        } else if (guess > randomnum) {
+            cout << "too high" << endl;
+        }
+        cout << "Guess: ";
+        cin >> guess;
+    }
+    cout << "Correct!" << endl;
+}
+
+//task14
+void displaywelcomemessage() {
+    cout << "Welcome to the C++ programming world!";
+}
+//task15
+void greetuser() {
+    string name;
+    cout << "Enter your name: ";
+    cin >> name;
+    cout << "Hello," << name << "!" << endl;
+}
+//task16
+int findmaxnumber(int num1, int num2) {
+    return (num1 >= num2) ? num1 : num2;
+}
+//task17
+int calculatefactorial(int num) {
+    int result = 1;
+    for (int i = 1; i <= num; i++) {
+        result *= i;
+    }
+    return result;
+}
+//task18
+int drawrectangle(int width, int height) {
+    cout << "The rectangle is :" << endl;
+    for (int i = 1; i <= height; i++) {
+        cout << endl;
+        for (int j = 1; j <= width; j++) {
+            cout << "*";
+        }
+    }
+}
+int main() {
+    drawrectangle(3, 2);
+}
