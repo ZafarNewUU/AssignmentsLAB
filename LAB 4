@@ -1,0 +1,128 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int num;
+    cin >> num;
+    if(num > 0) cout << "Positive number";
+    else if(num < 0) cout << "Negative number";
+    else cout << "Zero";
+    cout << endl;
+
+    cin >> num;
+    if(num % 2 == 0) cout << "Even number";
+    else cout << "Odd number";
+    cout << endl;
+
+    int a, b;
+    cin >> a >> b;
+    if(a > b) cout << "Largest number is " << a;
+    else cout << "Largest number is " << b;
+    cout << endl;
+
+    int c;
+    cin >> a >> b >> c;
+    if(a >= b && a >= c) cout << "Largest number is " << a;
+    else if(b >= a && b >= c) cout << "Largest number is " << b;
+    else cout << "Largest number is " << c;
+    cout << endl;
+
+    int year;
+    cin >> year;
+    if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) cout << "Leap year";
+    else cout << "Not a leap year";
+    cout << endl;
+
+    int speed;
+    cin >> speed;
+    if(speed < 20) cout << "too slow";
+    else if(speed > 80) cout << "too fast";
+    else cout << "just right";
+    cout << endl;
+
+    int marks;
+    cin >> marks;
+    if(marks >= 50) cout << "Pass";
+    else cout << "Fail";
+    cout << endl;
+
+    cin >> num;
+    if(num > 0) cout << "Positive";
+    else if(num < 0) cout << "Negative";
+    else cout << "Zero";
+    cout << endl;
+
+    char light;
+    cin >> light;
+    if(light == 'g') cout << "Go!";
+    else if(light == 'y') cout << "Get ready!";
+    else if(light == 'r') cout << "Stop";
+    cout << endl;
+
+    int grade;
+    cin >> grade;
+    switch(grade/10) {
+        case 10:
+        case 9: cout << "A"; break;
+        case 8: cout << "B"; break;
+        case 7: cout << "C"; break;
+        case 6: cout << "D"; break;
+        default: cout << "F";
+    }
+    cout << endl;
+
+    cin >> a >> b;
+    if(a % b == 0) cout << a << " is divisible by " << b;
+    else cout << a << " is not divisible by " << b;
+    cout << endl;
+
+    int angle1, angle2, angle3;
+    cin >> angle1 >> angle2 >> angle3;
+    if(angle1 + angle2 + angle3 == 180 && angle1 > 0 && angle2 > 0 && angle3 > 0) cout << "The triangle is valid";
+    else cout << "The triangle is not valid";
+    cout << endl;
+
+    char ch;
+    cin >> ch;
+    if(ch >= 'a' && ch <= 'z') cout << "Lowercase alphabet";
+    else if(ch >= 'A' && ch <= 'Z') cout << "Uppercase alphabet";
+    else cout << "It is not an alphabet";
+    cout << endl;
+
+    double weight1, price1, weight2, price2;
+    cin >> weight1 >> price1 >> weight2 >> price2;
+    double ratio1 = price1 / weight1;
+    double ratio2 = price2 / weight2;
+    if(ratio1 < ratio2) cout << "Package 1 has a better price";
+    else if(ratio2 < ratio1) cout << "Package 2 has a better price";
+    else cout << "Two packages have the same price";
+    cout << endl;
+
+    cin >> num;
+    if(num < 100 || num > 999) cout << "Invalid input";
+    else {
+        int original = num;
+        int reversed = (num % 10) * 100 + ((num / 10) % 10) * 10 + num / 100;
+        if(original == reversed) cout << original << " is a palindrome";
+        else cout << original << " is not a palindrome";
+    }
+    cout << endl;
+
+    double x, y;
+    cin >> x >> y;
+    double distance = sqrt(x*x + y*y);
+    if(distance <= 10) cout << "Point (" << x << "," << y << ") is in circle";
+    else cout << "Point (" << x << "," << y << ") is not in circle";
+    cout << endl;
+
+    double gpa;
+    cin >> gpa;
+    if(gpa >= 4.0) cout << "You got 80% scholarship";
+    else if(gpa >= 3.5) cout << "You got 60% scholarship";
+    else if(gpa >= 3.0) cout << "You got 50% scholarship";
+    else cout << "no scholarship";
+    cout << endl;
+
+    return 0;
+}
