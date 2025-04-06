@@ -1,0 +1,203 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    // Problem 1: Sum of 2D matrix
+    int a, b;
+    cin >> a >> b;
+    int m1[100][100];
+    for(int i=0; i<a; i++)
+        for(int j=0; j<b; j++)
+            cin >> m1[i][j];
+    
+    int s = 0;
+    for(int i=0; i<a; i++)
+        for(int j=0; j<b; j++)
+            s += m1[i][j];
+    cout << s << endl;
+
+    // Problem 2: Row max
+    cin >> a >> b;
+    for(int i=0; i<a; i++)
+        for(int j=0; j<b; j++)
+            cin >> m1[i][j];
+    
+    for(int i=0; i<a; i++) {
+        int m = m1[i][0];
+        for(int j=1; j<b; j++)
+            if(m1[i][j] > m)
+                m = m1[i][j];
+        cout << m << " ";
+    }
+    cout << endl;
+
+    // Problem 3: Column sum
+    cin >> a >> b;
+    for(int i=0; i<a; i++)
+        for(int j=0; j<b; j++)
+            cin >> m1[i][j];
+    
+    for(int j=0; j<b; j++) {
+        int c = 0;
+        for(int i=0; i<a; i++)
+            c += m1[i][j];
+        cout << c << " ";
+    }
+    cout << endl;
+
+    // Problem 4: Diagonal sum
+    int n;
+    cin >> n;
+    for(int i=0; i<n; i++)
+        for(int j=0; j<n; j++)
+            cin >> m1[i][j];
+    
+    int d = 0;
+    for(int i=0; i<n; i++)
+        d += m1[i][i];
+    cout << d << endl;
+
+    // Problem 5: Transpose
+    cin >> a >> b;
+    for(int i=0; i<a; i++)
+        for(int j=0; j<b; j++)
+            cin >> m1[i][j];
+    
+    for(int j=0; j<b; j++) {
+        for(int i=0; i<a; i++)
+            cout << m1[i][j] << " ";
+        cout << endl;
+    }
+
+    // Problem 6: Matrix multiply
+    int p;
+    cin >> a >> b;
+    for(int i=0; i<a; i++)
+        for(int j=0; j<b; j++)
+            cin >> m1[i][j];
+    
+    cin >> b >> p;
+    int m2[100][100];
+    for(int i=0; i<b; i++)
+        for(int j=0; j<p; j++)
+            cin >> m2[i][j];
+    
+    int res[100][100] = {0};
+    for(int i=0; i<a; i++)
+        for(int j=0; j<p; j++)
+            for(int k=0; k<b; k++)
+                res[i][j] += m1[i][k] * m2[k][j];
+    
+    for(int i=0; i<a; i++) {
+        for(int j=0; j<p; j++)
+            cout << res[i][j] << " ";
+        cout << endl;
+    }
+
+    // Problem 7: Rotate 90
+    cin >> n;
+    for(int i=0; i<n; i++)
+        for(int j=0; j<n; j++)
+            cin >> m1[i][j];
+    
+    for(int j=0; j<n; j++) {
+        for(int i=n-1; i>=0; i--)
+            cout << m1[i][j] << " ";
+        cout << endl;
+    }
+
+    // String Problem 1: Vowels and consonants
+    string str;
+    cin >> str;
+    int v = 0, c = 0;
+    for(char ch : str) {
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+            v++;
+        else
+            c++;
+    }
+    cout << v << " " << c << endl;
+
+    // String Problem 2: Reverse string
+    cin >> str;
+    for(int i=str.length()-1; i>=0; i--)
+        cout << str[i];
+    cout << endl;
+
+    // String Problem 3: Check palindrome
+    cin >> str;
+    bool pal = true;
+    for(int i=0; i<str.length()/2; i++)
+        if(str[i] != str[str.length()-1-i])
+            pal = false;
+    cout << (pal ? "Yes" : "No") << endl;
+
+    // String Problem 4: Most frequent char
+    cin >> str;
+    int cnt[256] = {0};
+    for(char ch : str)
+        cnt[ch]++;
+    
+    char maxc = str[0];
+    for(char ch : str)
+        if(cnt[ch] > cnt[maxc])
+            maxc = ch;
+    cout << maxc << endl;
+
+    // String Problem 5: Remove duplicates
+    cin >> str;
+    bool seen[256] = {false};
+    for(char ch : str) {
+        if(!seen[ch]) {
+            cout << ch;
+            seen[ch] = true;
+        }
+    }
+    cout << endl;
+
+    // String Problem 6: Longest word
+    cin.ignore();
+    getline(cin, str);
+    string word, longword;
+    int maxlen = 0;
+    
+    for(char ch : str) {
+        if(ch == ' ') {
+            if(word.length() > maxlen) {
+                maxlen = word.length();
+                longword = word;
+            }
+            word = "";
+        }
+        else {
+            word += ch;
+        }
+    }
+    
+    if(word.length() > maxlen)
+        longword = word;
+    cout << longword << endl;
+
+    // String Problem 7: Check anagram
+    string s1, s2;
+    cin >> s1 >> s2;
+    
+    if(s1.length() != s2.length()) {
+        cout << "No" << endl;
+        return 0;
+    }
+    
+    int f[256] = {0};
+    for(char ch : s1) f[ch]++;
+    for(char ch : s2) f[ch]--;
+    
+    bool ana = true;
+    for(int i=0; i<256; i++)
+        if(f[i] != 0)
+            ana = false;
+    
+    cout << (ana ? "Yes" : "No") << endl;
+
+    return 0;
+}
