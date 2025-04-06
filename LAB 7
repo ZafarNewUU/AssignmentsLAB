@@ -1,0 +1,231 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+void foodorder() {
+    int choice, quantity;
+    double total = 0;
+
+    do {
+        cout << "Menu:\n1. Pizza ($10)\n2. Burger ($8)\n3. Salad ($5)\n4. Exit\n";
+        cout << "Enter item number: ";
+        cin >> choice;
+
+        if (choice == 4) break;
+
+        cout << "Enter quantity: ";
+        cin >> quantity;
+
+        switch(choice) {
+            case 1: total += 10 * quantity; break;
+            case 2: total += 8 * quantity; break;
+            case 3: total += 5 * quantity; break;
+            default: cout << "Invalid choice. Try again.\n"; continue;
+        }
+
+        cout << "Total: $" << total << endl;
+
+    } while (true);
+}
+
+double calculatefee(int hours) {
+    double fee = 0;
+
+    if (hours <= 2) {
+        fee = 0;
+    } else if (hours <= 5) {
+        fee = 2 * (hours - 2);
+    } else {
+        fee = 2 * 3 + 5 * (hours - 5);
+    }
+
+    return fee;
+}
+
+void parkingfee() {
+    int hours;
+
+    while (true) {
+        cout << "Enter parking hours (negative value to exit): ";
+        cin >> hours;
+
+        if (hours < 0) break;
+
+        cout << "Parking fee: $" << calculatefee(hours) << endl;
+    }
+}
+
+double balance = 500;
+
+void depositmoney() {
+    double amount;
+    cout << "Enter amount to deposit: ";
+    cin >> amount;
+    balance += amount;
+}
+
+void withdrawmoney() {
+    double amount;
+    cout << "Enter amount to withdraw: ";
+    cin >> amount;
+
+    if (amount <= balance) {
+        balance -= amount;
+    } else {
+        cout << "Not enough funds.\n";
+    }
+}
+
+void checkbalance() {
+    cout << "Balance: $" << balance << endl;
+}
+
+void banksystem() {
+    int option;
+    do {
+        cout << "Bank menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n";
+        cout << "Choose an option: ";
+        cin >> option;
+
+        switch(option) {
+            case 1: depositmoney(); break;
+            case 2: withdrawmoney(); break;
+            case 3: checkbalance(); break;
+            case 4: break;
+            default: cout << "Invalid option. Try again.\n"; break;
+        }
+    } while (option != 4);
+}
+
+double moviecost(int choice, int tickets) {
+    double cost = 0;
+    switch(choice) {
+        case 1: cost = 8 * tickets; break;
+        case 2: cost = 10 * tickets; break;
+        case 3: cost = 12 * tickets; break;
+        default: cout << "Invalid movie selection.\n"; break;
+    }
+    return cost;
+}
+
+void moviebooking() {
+    int choice, tickets;
+
+    do {
+        cout << "Choose a movie:\n1. Movie A ($8)\n2. Movie B ($10)\n3. Movie C ($12)\n4. Exit\n";
+        cout << "Enter your movie choice: ";
+        cin >> choice;
+
+        if (choice == 4) break;
+
+        cout << "Enter number of tickets: ";
+        cin >> tickets;
+
+        cout << "Total cost: $" << moviecost(choice, tickets) << endl;
+
+    } while (choice != 4);
+}
+
+double trainfare(int choice, int tickets) {
+    double fare = 0;
+    switch(choice) {
+        case 1: fare = 15 * tickets; break;
+        case 2: fare = 20 * tickets; break;
+        case 3: fare = 25 * tickets; break;
+        default: cout << "Invalid train selection.\n"; break;
+    }
+    return fare;
+}
+
+void trainbooking() {
+    int choice, tickets;
+
+    do {
+        cout << "Choose a train:\n1. Train X ($15)\n2. Train Y ($20)\n3. Train Z ($25)\n4. Exit\n";
+        cout << "Enter your train choice: ";
+        cin >> choice;
+
+        if (choice == 4) break;
+
+        cout << "Enter number of tickets: ";
+        cin >> tickets;
+
+        cout << "Total fare: $" << trainfare(choice, tickets) << endl;
+
+    } while (choice != 4);
+}
+
+bool ispasswordstrong(string password) {
+    bool hasupper = false, haslower = false, hasdigit = false, hasspecial = false;
+
+    for (char c : password) {
+        if (isupper(c)) hasupper = true;
+        if (islower(c)) haslower = true;
+        if (isdigit(c)) hasdigit = true;
+        if (ispunct(c)) hasspecial = true;
+    }
+
+    return (password.length() >= 8 && hasupper && haslower && hasdigit && hasspecial);
+}
+
+void passwordchecker() {
+    string password;
+    cout << "Enter password: ";
+    cin >> password;
+
+    if (ispasswordstrong(password)) {
+        cout << "Password is strong.\n";
+    } else {
+        cout << "Password is weak.\n";
+    }
+}
+
+bool checkleapyear(int year) {
+    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+}
+
+bool isvaliddate(int day, int month, int year) {
+    if (month < 1 || month > 12) return false;
+
+    int daysinmonth[] = {31, (checkleapyear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    return (day >= 1 && day <= daysinmonth[month - 1]);
+}
+
+void nextday(int &day, int &month, int &year) {
+    int daysinmonth[] = {31, (checkleapyear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    day++;
+
+    if (day > daysinmonth[month - 1]) {
+        day = 1;
+        month++;
+
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
+    }
+}
+
+void calendarchecker() {
+    int day, month, year;
+
+    do {
+        cout << "Enter date (day month year): ";
+        cin >> day >> month >> year;
+
+        if (isvaliddate(day, month, year)) {
+            nextday(day, month, year);
+            cout << "Next day: " << day << "/" << month << "/" << year << endl;
+        } else {
+            cout << "Invalid date.\n";
+        }
+    } while (true);
+}
+
+int main() {
+    foodorder();
+}
