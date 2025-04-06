@@ -1,0 +1,129 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void task1() {
+    int n, sum = 0;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        sum += arr[i];
+    }
+    cout << sum << endl;
+}
+
+void task2() {
+    int n;
+    double avg = 0;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        avg += arr[i];
+    }
+    avg /= n;
+    cout << avg << endl;
+}
+
+void task3() {
+    int n;
+    cin >> n;
+    int minVal = 1e9;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        minVal = min(minVal, arr[i]);
+    }
+    cout << minVal << endl;
+}
+
+int indexOfLargestElement(double arr[], int n) {
+    if (n <= 0) return -1;
+    double maxVal = arr[0];
+    int index = 0;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] >= maxVal) {
+            maxVal = arr[i];
+            index = i;
+        }
+    }
+    return index;
+}
+
+bool strictlyEqual(const int arr1[], const int arr2[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (arr1[i] != arr2[i]) return false;
+    }
+    return true;
+}
+
+void task6() {
+    char ch;
+    int freq[26] = {0};
+    while (cin >> ch && ch != '0') {
+        if (ch >= 'a' && ch <= 'z') {
+            freq[ch - 'a']++;
+        }
+    }
+    for (int i = 0; i < 26; i++) {
+        if (freq[i] > 0) {
+            cout << char(i + 'a') << " : " << freq[i] << endl;
+        }
+    }
+}
+
+void task7() {
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    sort(arr, arr + n);
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void task8() {
+    int freq[6] = {0};
+    for (int i = 0; i < 10000; i++) {
+        int num = rand() % 6 + 1;
+        freq[num - 1]++;
+    }
+    for (int i = 0; i < 6; i++) {
+        cout << (i + 1) << ": " << freq[i] << endl;
+    }
+}
+
+void reverseArray(int arr[], int left, int right) {
+    while (left < right) {
+        swap(arr[left], arr[right]);
+        left++;
+        right--;
+    }
+}
+
+void task10() {
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    bool isSorted = true;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < arr[i - 1]) {
+            isSorted = false;
+            break;
+        }
+    }
+    cout << (isSorted ? "YES" : "NO") << endl;
+}
+
+int main() {
+    task7();
+    return 0;
+}
