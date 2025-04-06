@@ -1,0 +1,280 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int task1_1() {
+    for (int a = 1; a <= 10; ++a) {
+        cout << a << " ";
+    }
+}
+
+int task1_2() {
+    int b;
+    cin >> b;
+    for (int c = 1; c <= b; ++c) {
+        cout << c << " ";
+    }
+}
+
+int task1_3() {
+    int d = 0;
+    for (int e = 1; e <= 10; ++e) {
+        d += e;
+    }
+    cout << d;
+}
+
+int task1_4() {
+    int f, g = 0;
+    cin >> f;
+    for (int h = 1; h <= f; ++h) {
+        g += h;
+    }
+    cout << g;
+}
+
+int task1_5() {
+    int i = 0;
+    for (int j = 1; j <= 10; ++j) {
+        i += j;
+    }
+    cout << i / 10.0;
+}
+
+int task1_6() {
+    int k, l = 0;
+    cin >> k;
+    for (int m = 1; m <= k; ++m) {
+        l += m;
+    }
+    cout << l / float(k);
+}
+
+int task2_1() {
+    for (int n = 1; n <= 10; n += 2) {
+        cout << n << " ";
+    }
+}
+
+int task2_2() {
+    for (int o = 2; o <= 10; o += 2) {
+        cout << o << " ";
+    }
+}
+
+int task2_3() {
+    int p;
+    cin >> p;
+    for (int q = 1; q <= p; q += 2) {
+        cout << q << " ";
+    }
+}
+
+int task2_4() {
+    int r;
+    cin >> r;
+    for (int s = 2; s <= r; s += 2) {
+        cout << s << " ";
+    }
+}
+
+int task2_5() {
+    for (int t = 10; t <= 100; t += 10) {
+        cout << t << " ";
+    }
+}
+
+int task2_6() {
+    int u;
+    cin >> u;
+    for (int v = 10; v <= u; v += 10) {
+        cout << v << " ";
+    }
+}
+
+int task3() {
+    for (char w = 'A'; w <= 'Z'; ++w) {
+        cout << w << " ";
+        if ((w - 'A' + 1) % 5 == 0) {
+            cout << endl;
+        }
+    }
+}
+
+int task4() {
+    int x, y = 1;
+    cout << "Enter a number: ";
+    cin >> x;
+    if (x < 0) {
+        cout << "Factorial of a negative number is not defined.";
+    } else {
+        for (int z = 1; z <= x; ++z) {
+            y *= z;
+        }
+        cout << "Factorial of " << x << " is " << y;
+    }
+}
+
+int task5() {
+    int a1;
+    float a2 = 0.0, a3 = 0.0;
+
+    cout << "Enter the number of classes: ";
+    cin >> a1;
+
+    for (int a4 = 0; a4 < a1; ++a4) {
+        int a5;
+        float a6;
+        cout << "Enter credits and marks for class " << (a4 + 1) << ": ";
+        cin >> a5 >> a6;
+
+        a2 += a5 * a6;
+        a3 += a5;
+    }
+
+    cout << "Your total GPA is " << a2 / a3;
+}
+
+int task6() {
+    int b1, b2;
+    float b3 = 0.0, b4 = 0.0;
+
+    cout << "Enter number of students: ";
+    cin >> b1;
+
+    for (int b5 = 0; b5 < b1; ++b5) {
+        cout << "Enter number of classes for student " << (b5 + 1) << ": ";
+        cin >> b2;
+
+        for (int b6 = 0; b6 < b2; ++b6) {
+            int b7;
+            float b8;
+            cout << "Enter credits and marks for class " << (b6 + 1) << ": ";
+            cin >> b7 >> b8;
+
+            b3 += b7 * b8;
+            b4 += b7;
+        }
+    }
+
+    cout << "The total GPA of the class is " << b3 / b4;
+}
+
+int task7() {
+    int c1;
+    cin >> c1;
+
+    for (int c2 = 0; c2 < c1; ++c2) {
+        for (int c3 = 0; c3 < c1; ++c3) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+}
+
+int task8() {
+    int d1;
+    cin >> d1;
+
+    for (int d2 = 1; d2 <= d1; ++d2) {
+        for (int d3 = 1; d3 <= d2; ++d3) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+}
+
+int task9() {
+    int e1;
+    cin >> e1;
+
+    bool e2 = true;
+    if (e1 <= 1) {
+        e2 = false;
+    }
+
+    for (int e3 = 2; e3 * e3 <= e1; ++e3) {
+        if (e1 % e3 == 0) {
+            e2 = false;
+            break;
+        }
+    }
+
+    if (e2) {
+        cout << "Number is prime";
+    } else {
+        cout << "Number is not prime";
+    }
+}
+
+int task10() {
+    int f1;
+    cin >> f1;
+
+    for (int f2 = 1; f2 <= f1; ++f2) {
+        cout << f2 << "*" << f2 << "=" << (f2 * f2) << endl;
+    }
+}
+
+int task11() {
+    int g1, g2 = 0, g3 = 0, g4 = 0, g5 = 0;
+    while (true) {
+        cout << "Enter an integer, the input ends if it is 0: ";
+        cin >> g1;
+
+        if (g1 == 0) break;
+
+        if (g1 > 0) {
+            ++g2;
+        } else {
+            ++g3;
+        }
+        g4 += g1;
+        ++g5;
+    }
+
+    if (g5 != 0) {
+        cout << "The number of positives is " << g2 << endl;
+        cout << "The number of negatives is " << g3 << endl;
+        cout << "The total is " << g4 << endl;
+        cout << "The average is " << float(g4) / g5 << endl;
+    } else {
+        cout << "No numbers entered.";
+    }
+}
+
+int task12() {
+    int h1;
+    cin >> h1;
+
+    while (h1 != 0) {
+        cout << h1 % 10;
+        h1 /= 10;
+    }
+}
+
+int task13() {
+    int i1;
+    cin >> i1;
+
+    if (i1 == 0) {
+        cout << "The depth is 0";
+    } else {
+        for (int i2 = 1; i2 <= i1; ++i2) {
+            for (int i3 = 1; i3 <= i2; ++i3) {
+                cout << i2;
+            }
+            cout << endl;
+        }
+    }
+}
+
+int task14() {
+    string j1;
+    cin >> j1;
+
+    int j2 = 0;
+    int j3 = j1.size();
+
+    for (int j4 = 0; j4 < j3; ++j4) {
+        if (j1[j3 - 1
