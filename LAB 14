@@ -1,0 +1,405 @@
+#include <iostream>
+using namespace std;
+#include <fstream>
+#include <string>
+
+
+//1
+// int main() {
+//     ofstream file("output1.txt");
+//     file << "Hello, File!";
+//     file.close();
+// }
+
+//2
+// int main() {
+//     ifstream file("greeting.txt");
+//     string line;
+//     getline(file, line);
+//     cout << line << endl;
+//     file.close();
+// }
+
+
+//3
+// int main() {
+//     int age;
+//     string name;
+//     cout << "Enter your name: ";
+//     getline(cin, name);
+//     cout << "Enter your age: ";
+//     cin >> age;
+//
+//     fstream file("user.txt");
+//     file << name << " " << age << endl;
+//     file.close();
+// }
+
+
+//4
+// int main() {
+//     fstream file("data.txt");
+//     string line;
+//     while (getline(file, line)) {
+//         cout << line << endl;
+//     }
+//     file.close();
+//
+// }
+
+
+//5
+// int main() {
+//     ifstream file("source.txt");
+//     ofstream copy_file("target.txt");
+//     string line;
+//     while (getline(file, line)) {
+//         copy_file << line << endl;
+//     }
+//     copy_file.close();
+//     file.close();
+//
+//
+//
+// }
+
+
+
+//6
+// int main() {
+//     int wordCount = 0;
+//     ifstream file("essay.txt");
+//     string word;
+//     while (file >> word) {
+//         wordCount++;
+//     }
+//     cout << wordCount << endl;
+//     file.close();
+// }
+
+
+//7
+// int main() {
+//     int sum = 0;
+//     ifstream file("numbers.txt");
+//     int line;
+//     while (file >> line) {
+//         sum += line;
+//     }
+//     cout << sum << endl;
+//     file.close();
+// }
+
+
+
+//8
+// int main() {
+//     ifstream file("values.txt");
+//     int number;
+//     int maximum, minimum;
+//     bool first = true;
+//     while (file >> number) {
+//         if (first) {
+//             minimum = maximum = number;
+//             first = false;
+//         }
+//         if (number > maximum) {
+//             maximum = number;
+//         }
+//         else if (number < minimum) {
+//             minimum = number;
+//         }
+//     }
+//     cout << "Minimum: " << minimum << " Maximum:" << maximum << endl;
+// }
+
+//9
+// struct Student {
+//     string name;
+//     string id;
+//     double gpa;
+// };
+//
+// int main() {
+//     Student s1;
+//     cin >> s1.name >> s1.id >> s1.gpa;
+//     ofstream student_info("student_table.txt");
+//     student_info << s1.name << " " << s1.id << " " << s1.gpa;
+//
+// }
+
+//10
+// int main() {
+//     ifstream file("student_table.txt");
+//     string line;
+//     file >> line;
+//     cout << "Name: " << line << endl;
+//     file >> line;
+//     cout << "ID: " << line << endl;
+//     file >> line;
+//     cout << "GPA: " << line << endl;
+// }
+
+
+//13
+// struct Date {
+//     int day, month, year;
+// };
+//
+// int main() {
+//     Date date;
+//     cin >> date.day >> date.month >> date.year;
+//     cout << "Day: " << date.day << " Month: " << date.month << " Year: " << date.year << endl;
+// }
+
+
+
+
+//14
+// struct  StudentInfo {
+//     string id;
+//     string gender;
+//     int age;
+//     double CGA;
+// };
+//
+// int main() {
+//     StudentInfo student;
+//     cin >> student.id >> student.gender >> student.age >> student.CGA;
+//     cout << "ID:" << student.id << " Gender: "  << student.gender << " Age: " << student.age << " CGA: "  << student.CGA;
+//     return 0;
+// }
+
+
+//15
+// struct StudentGrade {
+//     int Lab[5];
+//     int Homework[5];
+//     int Exam[2];
+// };
+//
+//
+// int main() {
+//     int Total = 0;
+//     int Average = 0;
+//     StudentGrade Student;
+//     for (int i = 0; i < 5; i++) {
+//         cout << "Enter a score for Lab" << i + 1 << ": ";
+//         cin >> Student.Lab[i];
+//         Total += Student.Lab[i];
+//     }
+//
+//     for (int i = 0; i < 5; i++) {
+//         cout << "Enter a score for Homework" << i + 1 << ": ";
+//         cin >> Student.Homework[i];
+//         Total += Student.Homework[i];
+//     }
+//
+//     for (int i = 0; i < 2; i++) {
+//         cout << "Enter a score for Exam" << i + 1 << ": ";
+//         cin >> Student.Exam[i];
+//         Total += Student.Exam[i];
+//     }
+//
+//     cout << "Total: " << Total << endl;
+//     cout << "Average: " << Total/10 << endl;
+//
+// }
+
+
+//16
+// struct StudentInfo {
+//     string name;
+//     int age;
+// };
+//
+// int main() {
+//     StudentInfo student[3];
+//     for (int i = 0; i < 3; i++) {
+//         cout << "Enter student name: ";
+//         cin >> student[i].name ;
+//         cout << "Enter student age: ";
+//         cin >> student[i].age;
+//
+//     }
+//
+//     for (int i = 0; i < 3; i++) {
+//         cout << "Name: " <<student[i].name << " Age:  " << student[i].age << endl;
+//     }
+// }
+
+//17
+// struct StudentInfo {
+//     int id;
+// };
+//
+// int main() {
+//     StudentInfo s1;
+//     StudentInfo s2;
+//     cout << "Enter ID of student: " << endl;
+//     cin >> s1.id;
+//     s2.id = s1.id;
+//     cout << "ID of student 1: " << s2.id << endl;
+//     cout << "ID of student 2: " << s2.id << "(Copied)" << endl;
+//
+//
+// }
+
+//18
+// struct StudentInfo {
+//     string Name;
+//     int age;
+// };
+//
+//
+// int main() {
+//     StudentInfo student[5];
+//     for (int i = 0; i < 5; i++) {
+//         if (i == 4) {
+//             student[4].Name = student[2].Name;
+//             student[4].age = student[2].age;
+//             break;
+//         }
+//         cout << "Enter " << i+1 << " student name:" << endl;
+//         cin >> student[i].Name;
+//
+//         cout << "Enter " << i+1 << " student age:" << endl;
+//         cin >> student[i].age;
+//     }
+//
+//     for (int i = 0; i < 5; i++) {
+//         cout << "Name: " << student[i].Name << " Age: " << student[i].age << endl;
+//
+//     }
+// }
+
+//19
+
+// struct Date {
+//     int day;
+//     int month;
+//     int year;
+// };
+//
+// struct BankAccount {
+//     char name[15];
+//     string AccountNo;
+//     Date date;
+// };
+//
+//
+// int main() {
+//     BankAccount bank;
+//     cin >> bank.name;
+//     cin >> bank.AccountNo;
+//     cin >> bank.date.day >> bank.date.month >> bank.date.year;
+//     cout << "Name: " << bank.name  << endl;
+//     cout << "Bank: " << bank.AccountNo << endl;
+//     cout << bank.date.day << "-" << bank.date.month << "-" << bank.date.year << endl;
+//
+// }
+
+
+
+//20
+//
+//
+// struct Point {
+//     int x;
+//     int y;
+// };
+//
+// struct Points {
+//     Point p1;
+//     Point p2;
+// };
+//
+// int main() {
+//     Points coordinates;
+//     cout << "Enter coordinates of the points (p1): " <<  endl;
+//     cin >> coordinates.p1.x >> coordinates.p1.y;
+//     cout << "Enter coordinates of the points (p2): " <<  endl;
+//     cin >> coordinates.p2.x >> coordinates.p2.y;
+//
+//     cout << "Distance between points is: " << endl;
+//     double distance = sqrt(pow(coordinates.p2.x - coordinates.p1.x, 2) + pow(coordinates.p2.y - coordinates.p1.y, 2));
+//     cout << distance << endl;
+// }
+
+//21
+
+
+// struct coordinate {
+//     int x;
+//     int y;
+// };
+//
+// struct Point {
+//     coordinate A;
+//     coordinate B;
+//     coordinate C;
+// };
+//
+// double distance(int x1, int y1, int x2, int y2) {
+//     double dist = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
+//     return dist;
+// }
+//
+// int main() {
+//     double perimeter = 0;
+//     Point triangles_point;
+//
+//
+//     cout << "Enter coordinates of A point:" << endl;
+//     cin >> triangles_point.A.x >> triangles_point.A.y;
+//
+//     cout << "Enter coordinates of B point:" << endl;
+//     cin >> triangles_point.B.x >> triangles_point.B.y;
+//
+//     cout << "Enter coordinates of C point:" << endl;
+//     cin >> triangles_point.C.x >> triangles_point.C.y;
+//
+//     perimeter += distance(triangles_point.A.x, triangles_point.A.y, triangles_point.B.x, triangles_point.B.y);
+//     perimeter += distance(triangles_point.A.x, triangles_point.A.y, triangles_point.C.x, triangles_point.C.y);
+//     perimeter += distance(triangles_point.B.x, triangles_point.B.y, triangles_point.C.x, triangles_point.C.y);
+//
+//     cout << "The perimeter of the triangle is: " << perimeter << endl;
+//
+//     return 0;
+// }
+
+
+//24
+
+struct Contact {
+    char name[30];
+    char phone[15];
+    char email[30];
+};
+
+int main() {
+    Contact contacts[10];
+    string searched_name;
+
+    for (int i = 0; i < 10; i++) {
+        cout << "Please enter the contact name: ";
+        cin >> contacts[i].name;
+        cout << "Please enter the contact phone: ";
+        cin >> contacts[i].phone;
+        cout << "Please enter the contact email: ";
+        cin >> contacts[i].email;
+    }
+
+    cout << "Search: " << endl;
+    cin >> searched_name;
+
+
+    for (int i = 0; i < 10; i++) {
+        if (contacts[i].name == searched_name) {
+            cout << "Here is info about: " << searched_name << endl;
+            cout << "Name: " << contacts[i].name << endl;
+            cout << "Phone: " << contacts[i].phone << endl;
+            cout << "Email: " << contacts[i].email << endl;
+        }
+    }
+}
